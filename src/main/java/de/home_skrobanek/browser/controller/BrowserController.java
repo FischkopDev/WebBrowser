@@ -1,6 +1,7 @@
 package de.home_skrobanek.browser.controller;
 
 import de.home_skrobanek.browser.Browser;
+import de.home_skrobanek.browser.utils.DefaultSearchEngine;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -30,9 +31,12 @@ public class BrowserController {
 
     @FXML
     protected void search(){
-        //webview.getEngine().load(searchField.getText());
-        Browser.collector.getActive().getView().getEngine().load(searchField.getText());
-        Browser.collector.getActive().setSearchTxt(searchField.getText());
+        String searchContent = setupSearchContent(searchField.getText());
+        System.out.println(searchContent);
+
+        Browser.collector.getActive().getView().getEngine().load(searchContent);
+        Browser.collector.getActive().setSearchTxt(searchContent);
+        searchField.setText(searchContent);
     }
 
     private void getContent(){
@@ -52,5 +56,16 @@ public class BrowserController {
         }
     }
 
+    public String setupSearchContent(String content){
+        if(content.contains(".")){
+            return "http://"+content;
+        }
+        if(content.contains("http://")){
+            return "http://"+content;
+        }
+        else{
+            return DefaultSearchEngine.SEARCH_ENGINE + "/search?hl="+DefaultSearchEngine.LANGUAGE + "&q="+content;
+        }
+    }
 
 }

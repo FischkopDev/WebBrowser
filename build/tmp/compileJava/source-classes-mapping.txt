@@ -1,17 +1,21 @@
-de/home_skrobanek/browser/utils/Utils.java
- de.home_skrobanek.browser.utils.Utils
+de/home_skrobanek/browser/controller/BrowserController.java
+ de.home_skrobanek.browser.controller.BrowserController
+ de.home_skrobanek.browser.controller.BrowserController$1
+ de.home_skrobanek.browser.controller.BrowserController$1$1
+de/home_skrobanek/browser/animation/SearchTabAnimation.java
+ de.home_skrobanek.browser.animation.SearchTabAnimation
 de/home_skrobanek/browser/webEngines/JFXWebengine.java
  de.home_skrobanek.browser.webEngines.JFXWebengine
-de/home_skrobanek/browser/ui/SearchTabCollector.java
- de.home_skrobanek.browser.ui.SearchTabCollector
- de.home_skrobanek.browser.ui.SearchTabCollector$1
+de/home_skrobanek/browser/Browser.java
+ de.home_skrobanek.browser.Browser
 de/home_skrobanek/browser/ui/SearchTab.java
  de.home_skrobanek.browser.ui.SearchTab
  de.home_skrobanek.browser.ui.SearchTab$1
  de.home_skrobanek.browser.ui.SearchTab$2
+de/home_skrobanek/browser/utils/Utils.java
+ de.home_skrobanek.browser.utils.Utils
+de/home_skrobanek/browser/ui/SearchTabCollector.java
+ de.home_skrobanek.browser.ui.SearchTabCollector
+ de.home_skrobanek.browser.ui.SearchTabCollector$1
 de/home_skrobanek/browser/utils/DefaultSearchEngine.java
  de.home_skrobanek.browser.utils.DefaultSearchEngine
-de/home_skrobanek/browser/controller/BrowserController.java
- de.home_skrobanek.browser.controller.BrowserController
-de/home_skrobanek/browser/Browser.java
- de.home_skrobanek.browser.Browser

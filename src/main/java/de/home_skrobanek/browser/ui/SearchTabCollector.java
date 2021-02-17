@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 
@@ -19,9 +20,10 @@ public class SearchTabCollector {
 
     public SearchTabCollector(){
         add = new Button("+");
-        add.setLayoutY(10);
+        add.setLayoutY(9);
         add.setPrefWidth(50);
         add.setPrefHeight(50);
+        add.setStyle("-fx-background-color: #323740; -fx-text-fill: white;");
         add.setFont(new Font(16));
         add.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
@@ -29,6 +31,12 @@ public class SearchTabCollector {
                 setActive(tab);
                 addSearchTab(tab);
             }
+        });
+        add.addEventFilter(MouseEvent.MOUSE_ENTERED, e ->{
+            add.setStyle("-fx-background-color: #3d434d; -fx-text-fill: white;");
+        });
+        add.addEventFilter(MouseEvent.MOUSE_EXITED, e ->{
+            add.setStyle("-fx-background-color: #323740; -fx-text-fill: white;");
         });
 
     }
@@ -57,7 +65,6 @@ public class SearchTabCollector {
                     pane.getChildren().clear();
                     pane.getChildren().add(collection.get(i).getView());
                     search.setText(collection.get(i).getSearchTxt());
-                    System.out.println("Pane set");
                 }
                 else{
                     System.err.println("ERROR: Pane not initialized");
@@ -69,7 +76,6 @@ public class SearchTabCollector {
     public SearchTab getActive(){
         for(int i = 0; i < collection.size(); i++){
             if(collection.get(i).isActive()){
-                System.out.println(collection.get(i).getTitle());
                 return collection.get(i);
             }
         }
@@ -83,7 +89,7 @@ public class SearchTabCollector {
             setLayout();
         }
         else{
-            System.exit(0);
+            Browser.stopProgram();
         }
     }
 

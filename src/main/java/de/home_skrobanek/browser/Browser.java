@@ -34,7 +34,7 @@ public class Browser extends Application {
         collector.addButton();
 
         stage.setScene(mainScene);
-        stage.setTitle("Browser Version "+ VERSION+ "| Timo Skrobanek");
+        stage.setTitle("Browser Version "+ VERSION+ " | Timo Skrobanek");
         stage.setResizable(true);
 
 
@@ -43,5 +43,10 @@ public class Browser extends Application {
         SearchTab tab = new SearchTab("Hallo");
         collector.addSearchTab(tab);
         collector.setActive(tab);
+    }
+
+    public static void stopProgram(){
+
+        System.exit(0);
     }
 }

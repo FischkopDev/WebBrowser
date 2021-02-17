@@ -2,6 +2,7 @@ package de.home_skrobanek.browser.controller;
 
 import de.home_skrobanek.browser.Browser;
 import de.home_skrobanek.browser.utils.DefaultSearchEngine;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -10,6 +11,7 @@ import javafx.scene.web.WebView;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.management.PlatformLoggingMXBean;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -27,6 +29,22 @@ public class BrowserController {
 
     public void initialize(){
         //webview.getEngine().load(getClass().getResource("pages/index.html").toString());
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(500);
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            Browser.collector.getActive().getView().getEngine().load(getClass().getResource("/pages/index.html").toString());
+                        }
+                    });
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
     @FXML

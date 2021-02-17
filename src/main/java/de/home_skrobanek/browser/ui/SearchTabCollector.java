@@ -20,7 +20,7 @@ public class SearchTabCollector {
 
     public SearchTabCollector(){
         add = new Button("+");
-        add.setLayoutY(9);
+        add.setLayoutY(0);
         add.setPrefWidth(50);
         add.setPrefHeight(50);
         add.setStyle("-fx-background-color: #323740; -fx-text-fill: white;");

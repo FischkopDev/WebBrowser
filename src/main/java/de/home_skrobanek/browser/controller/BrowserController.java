@@ -4,14 +4,15 @@ import de.home_skrobanek.browser.Browser;
 import de.home_skrobanek.browser.utils.DefaultSearchEngine;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.management.PlatformLoggingMXBean;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -25,10 +26,13 @@ public class BrowserController {
     TextField searchField;
 
     @FXML
-    AnchorPane webRenderer;
+    AnchorPane webRenderer, parent;
+
+    @FXML
+    Button menu;
 
     public void initialize(){
-        //webview.getEngine().load(getClass().getResource("pages/index.html").toString());
+        //loading the default page.
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -45,6 +49,14 @@ public class BrowserController {
                 }
             }
         }).start();
+
+        //animation for nice look
+        menu.addEventFilter(MouseEvent.MOUSE_ENTERED, e ->{
+            menu.setStyle("-fx-background-color: #3d434d; -fx-text-fill: white;");
+        });
+        menu.addEventFilter(MouseEvent.MOUSE_EXITED, e ->{
+            menu.setStyle("-fx-background-color: #505661; -fx-text-fill: white;");
+        });
     }
 
     @FXML
@@ -54,7 +66,15 @@ public class BrowserController {
 
         Browser.collector.getActive().getView().getEngine().load(searchContent);
         Browser.collector.getActive().setSearchTxt(searchContent);
+        Browser.collector.getActive().setLastPage(searchContent);
+
         searchField.setText(searchContent);
+    }
+
+    @FXML
+    protected void openMenu(){
+        Browser.settingsMenu.setVisible(!Browser.settingsMenu.isVisible());
+        Browser.settingsMenu.updatePosition();
     }
 
     private void getContent(){
@@ -75,10 +95,13 @@ public class BrowserController {
     }
 
     public String setupSearchContent(String content){
-        if(content.contains(".")){
+        if(content.contains(".") && !content.contains("http")){
             return "http://"+content;
         }
-        if(content.contains("http://")){
+        if(content.contains(".")){
+            return content;
+        }
+        else if(content.contains("http://")){
             return "http://"+content;
         }
         else{

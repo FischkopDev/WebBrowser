@@ -10,6 +10,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.web.WebView;
 
+import java.util.ArrayList;
+
 
 public class SearchTab extends Pane {
 
@@ -18,11 +20,13 @@ public class SearchTab extends Pane {
     private WebView view;
     private String searchTxt;
 
+    ArrayList<String> lastPage = new ArrayList<>();
+
 
     public SearchTab(String title){
         //Init panel
         setLayoutX(0);
-        setLayoutY(9);
+        setLayoutY(0);
 
         setPrefWidth(200);
         setPrefHeight(50);
@@ -78,6 +82,14 @@ public class SearchTab extends Pane {
         getChildren().add(close);
 
         Browser.mainPane.getChildren().add(this);
+    }
+
+    public void setLastPage(String page){
+        lastPage.add(page);
+    }
+
+    public String getLastPage(){
+        return lastPage.get(lastPage.size()-1);
     }
 
     private void activateThisTab(){

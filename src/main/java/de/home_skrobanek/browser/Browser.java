@@ -44,13 +44,13 @@ public class Browser extends Application {
 
         stage.show();
 
-        SearchTab tab = new SearchTab("Hallo");
+        SearchTab tab = new SearchTab("Hallo", SearchTab.TabType.DEFAULT_TAb);
         collector.addSearchTab(tab);
         collector.setActive(tab);
 
         settingsMenu = new Menu(300, 600);
-        settingsMenu.setVisible(false);
-        mainPane.getChildren().add(settingsMenu);
+        settingsMenu.getSettings().setVisible(false);
+        mainPane.getChildren().add(settingsMenu.getSettings());
     }
 
     public static void stopProgram(){

@@ -27,7 +27,7 @@ public class SearchTabCollector {
         add.setFont(new Font(16));
         add.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-                SearchTab tab = new SearchTab("Neuer Tab");
+                SearchTab tab = new SearchTab("Neuer Tab", SearchTab.TabType.DEFAULT_TAb);
                 setActive(tab);
                 addSearchTab(tab);
             }
@@ -63,7 +63,10 @@ public class SearchTabCollector {
 
                 if(pane != null) {
                     pane.getChildren().clear();
-                    pane.getChildren().add(collection.get(i).getView());
+                    if(!collection.get(i).isInternSetting())
+                        pane.getChildren().add(collection.get(i).getView());
+                    else
+                        pane.getChildren().add(collection.get(i).getIntern());
                     search.setText(collection.get(i).getSearchTxt());
                 }
                 else{

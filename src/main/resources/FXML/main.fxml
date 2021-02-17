@@ -15,7 +15,7 @@
       <AnchorPane layoutX="1.0" layoutY="60.0" prefHeight="50.0" prefWidth="1600.0" style="-fx-background-color: #505661;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="51.0">
          <children>
             <TextField fx:id="searchField" layoutX="178.0" layoutY="5.0" onAction="#search" opacity="0.55" prefHeight="40.0" prefWidth="1141.0" promptText="Search..." AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="178.0" AnchorPane.rightAnchor="281.0" AnchorPane.topAnchor="5.0" />
-            <Button layoutX="14.0" layoutY="5.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #505661;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="5.0">
+            <Button fx:id="back" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #505661;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="5.0">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -23,7 +23,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button layoutX="64.0" layoutY="5.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #505661;" AnchorPane.leftAnchor="65.0" AnchorPane.topAnchor="5.0">
+            <Button fx:id="forward" layoutX="64.0" layoutY="5.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #505661;" AnchorPane.leftAnchor="65.0" AnchorPane.topAnchor="5.0">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                      <image>

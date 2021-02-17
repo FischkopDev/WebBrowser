@@ -29,7 +29,7 @@ public class BrowserController {
     AnchorPane webRenderer, parent;
 
     @FXML
-    Button menu;
+    Button menu, back, forward;
 
     public void initialize(){
         //loading the default page.
@@ -49,14 +49,9 @@ public class BrowserController {
                 }
             }
         }).start();
-
-        //animation for nice look
-        menu.addEventFilter(MouseEvent.MOUSE_ENTERED, e ->{
-            menu.setStyle("-fx-background-color: #3d434d; -fx-text-fill: white;");
-        });
-        menu.addEventFilter(MouseEvent.MOUSE_EXITED, e ->{
-            menu.setStyle("-fx-background-color: #505661; -fx-text-fill: white;");
-        });
+        addAnimation(menu);
+        addAnimation(forward);
+        addAnimation(back);
     }
 
     @FXML
@@ -73,7 +68,7 @@ public class BrowserController {
 
     @FXML
     protected void openMenu(){
-        Browser.settingsMenu.setVisible(!Browser.settingsMenu.isVisible());
+        Browser.settingsMenu.getSettings().setVisible(!Browser.settingsMenu.getSettings().isVisible());
         Browser.settingsMenu.updatePosition();
     }
 
@@ -98,15 +93,21 @@ public class BrowserController {
         if(content.contains(".") && !content.contains("http")){
             return "http://"+content;
         }
-        if(content.contains(".")){
-            return content;
-        }
-        else if(content.contains("http://")){
-            return "http://"+content;
+        else if(content.contains("!g")){
+            return null;//TODO implement shortcuts
         }
         else{
             return DefaultSearchEngine.SEARCH_ENGINE + "/search?hl="+DefaultSearchEngine.LANGUAGE + "&q="+content;
         }
     }
 
+    private void addAnimation(Button button){
+        //animation for nice look
+        button.addEventFilter(MouseEvent.MOUSE_ENTERED, e ->{
+            button.setStyle("-fx-background-color: #3d434d; -fx-text-fill: white;");
+        });
+        button.addEventFilter(MouseEvent.MOUSE_EXITED, e ->{
+            button.setStyle("-fx-background-color: #505661; -fx-text-fill: white;");
+        });
+    }
 }

@@ -121,11 +121,21 @@ public class SearchTab extends Pane {
     }
 
     public void setLastPage(String page){
+        System.out.println(page);
         lastPage.add(page);
     }
 
     public String getLastPage(){
-        return lastPage.get(lastPage.size()-1);
+        if(lastPage.size() > 1) {
+            return lastPage.get(lastPage.size() - 2);
+        }
+        else {
+            return null;
+        }
+    }
+
+    public void removeLastPage(){
+        lastPage.remove(lastPage.size()-1);
     }
 
     private void activateThisTab(){

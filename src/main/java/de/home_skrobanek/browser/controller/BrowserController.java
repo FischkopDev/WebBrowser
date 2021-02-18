@@ -57,11 +57,8 @@ public class BrowserController {
     @FXML
     protected void search(){
         String searchContent = setupSearchContent(searchField.getText());
-        System.out.println(searchContent);
 
-        Browser.collector.getActive().getView().getEngine().load(searchContent);
-        Browser.collector.getActive().setSearchTxt(searchContent);
-        Browser.collector.getActive().setLastPage(searchContent);
+        Browser.collector.searchOnTab(searchContent);
 
         searchField.setText(searchContent);
     }
@@ -70,6 +67,17 @@ public class BrowserController {
     protected void openMenu(){
         Browser.settingsMenu.getSettings().setVisible(!Browser.settingsMenu.getSettings().isVisible());
         Browser.settingsMenu.updatePosition();
+    }
+
+    @FXML
+    protected void onBack(){
+        String line = Browser.collector.getActive().getLastPage();
+
+        System.out.println(Browser.collector.getActive().getLastPage());
+        if(line != null){
+            Browser.collector.getActive().removeLastPage();
+            Browser.collector.searchOnTab(line);
+        }
     }
 
     private void getContent(){

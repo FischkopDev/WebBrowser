@@ -11,11 +11,18 @@ import javafx.scene.text.Font;
 
 import java.util.ArrayList;
 
+/*
+    This class collects all tabs which are open.
+ */
 public class SearchTabCollector {
 
+    //List which saves all tabs
     private ArrayList<SearchTab> collection = new ArrayList<>();
+
+    //button to add/open more tabs
     private Button add;
 
+    // x-Axe size of the tab
     private static final int TAB_SIZE = 200;
 
     public SearchTabCollector(){
@@ -39,6 +46,16 @@ public class SearchTabCollector {
             add.setStyle("-fx-background-color: #323740; -fx-text-fill: white;");
         });
 
+    }
+
+    /*
+        This method starts a new search request. The tab will show the webpage on
+        the UI.
+     */
+    public void searchOnTab(String searchContent){
+        Browser.collector.getActive().getView().getEngine().load(searchContent);
+        Browser.collector.getActive().setSearchTxt(searchContent);
+        Browser.collector.getActive().setLastPage(searchContent);
     }
 
     public void addButton(){
@@ -103,7 +120,6 @@ public class SearchTabCollector {
 
             tmpX+=TAB_SIZE+5;
         }
-
         add.setLayoutX(tmpX);
     }
 }

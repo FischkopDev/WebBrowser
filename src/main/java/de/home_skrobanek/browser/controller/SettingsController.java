@@ -17,4 +17,9 @@ public class SettingsController {
         Browser.settingsMenu.getSettings().setVisible(!Browser.settingsMenu.getSettings().isVisible());
         Browser.settingsMenu.updatePosition();
     }
+
+    @FXML
+    protected void onWebengine(){
+
+    }
 }

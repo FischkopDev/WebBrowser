@@ -23,6 +23,7 @@ dependencies {
     implementation files('lib/javafx.web.jar')
     implementation files('lib/javafx.swt.jar')
 
+
 }
 
 test {

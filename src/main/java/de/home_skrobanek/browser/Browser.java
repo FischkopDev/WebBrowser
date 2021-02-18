@@ -1,6 +1,7 @@
 package de.home_skrobanek.browser;
 
 import de.home_skrobanek.browser.controller.BrowserController;
+import de.home_skrobanek.browser.plugins.loader.PluginLoader;
 import de.home_skrobanek.browser.ui.Menu;
 import de.home_skrobanek.browser.ui.SearchTab;
 import de.home_skrobanek.browser.ui.SearchTabCollector;
@@ -18,6 +19,8 @@ public class Browser extends Application {
     public static Stage stage;
     public static Menu settingsMenu;
     public static SearchTabCollector collector;
+    public static PluginLoader plugin;//TODO implement this
+
     public static final double VERSION = 1.0;
 
     public static void main(String[]args){
@@ -29,6 +32,9 @@ public class Browser extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
+        /*
+            Loading the default fxml file. This is the basic webbrowser UI
+         */
         FXMLLoader fxmlLoader = new FXMLLoader();
         mainPane = fxmlLoader.load(getClass().getResource("/FXML/main.fxml").openStream());
         mainController = (BrowserController) fxmlLoader.getController();

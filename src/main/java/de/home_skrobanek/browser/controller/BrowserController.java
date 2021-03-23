@@ -1,6 +1,8 @@
 package de.home_skrobanek.browser.controller;
 
 import de.home_skrobanek.browser.Browser;
+import de.home_skrobanek.browser.history.History;
+import de.home_skrobanek.browser.utils.BackgroundTask;
 import de.home_skrobanek.browser.utils.DefaultSearchEngine;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -31,9 +33,10 @@ public class BrowserController {
     @FXML
     Button menu, back, forward;
 
+    private History history;
+
     public void initialize(){
-        //loading the default page.
-        new Thread(new Runnable() {
+        new BackgroundTask("SearchEngine", new Runnable() {
             @Override
             public void run() {
                 try {
@@ -48,7 +51,11 @@ public class BrowserController {
                     e.printStackTrace();
                 }
             }
-        }).start();
+        });
+
+        history = new History();
+
+        //animation of the menu buttons
         addAnimation(menu);
         addAnimation(forward);
         addAnimation(back);
@@ -58,7 +65,7 @@ public class BrowserController {
     protected void search(){
         String searchContent = setupSearchContent(searchField.getText());
 
-        Browser.collector.searchOnTab(searchContent);
+        Browser.collector.searchOnTab(searchContent, history);
 
         searchField.setText(searchContent);
     }
@@ -76,10 +83,13 @@ public class BrowserController {
         System.out.println(Browser.collector.getActive().getLastPage());
         if(line != null){
             Browser.collector.getActive().removeLastPage();
-            Browser.collector.searchOnTab(line);
+            Browser.collector.searchOnTab(line, history);
         }
     }
 
+    /*
+        Returns the content from a webpage.
+     */
     private void getContent(){
         URL ur = null;
         try {
@@ -109,6 +119,9 @@ public class BrowserController {
         }
     }
 
+    /*
+        Makes a small animation when adding a new tab
+     */
     private void addAnimation(Button button){
         //animation for nice look
         button.addEventFilter(MouseEvent.MOUSE_ENTERED, e ->{

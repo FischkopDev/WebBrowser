@@ -1,6 +1,7 @@
 package de.home_skrobanek.browser.ui;
 
 import de.home_skrobanek.browser.Browser;
+import de.home_skrobanek.browser.history.History;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -52,22 +53,30 @@ public class SearchTabCollector {
         This method starts a new search request. The tab will show the webpage on
         the UI.
      */
-    public void searchOnTab(String searchContent){
+    public void searchOnTab(String searchContent, History history){
         Browser.collector.getActive().getView().getEngine().load(searchContent);
         Browser.collector.getActive().setSearchTxt(searchContent);
         Browser.collector.getActive().setLastPage(searchContent);
+
+        history.addNewEntry(searchContent, searchContent);
     }
 
     public void addButton(){
         Browser.mainPane.getChildren().add(add);
     }
 
+    /*
+        this will add a new tab.
+     */
     public void addSearchTab(SearchTab tab){
         collection.add(tab);
         setActive(tab);
         setLayout();
     }
 
+    /*
+        Set another tab as selected and shows the content of it.
+     */
     public void setActive(SearchTab tab){
         for(int i = 0; i < collection.size(); i++){
             if(collection.get(i) != tab){
@@ -93,6 +102,9 @@ public class SearchTabCollector {
         }
     }
 
+    /*
+        Selects the current active tab
+     */
     public SearchTab getActive(){
         for(int i = 0; i < collection.size(); i++){
             if(collection.get(i).isActive()){
@@ -102,6 +114,9 @@ public class SearchTabCollector {
         return null;
     }
 
+    /*
+        removes and close the current tab
+     */
     public void removeTab(SearchTab tab){
         if(collection.size() > 1) {
             collection.remove(tab);
@@ -113,6 +128,10 @@ public class SearchTabCollector {
         }
     }
 
+    /*
+        UI Layout will be changed by this method.
+        e.g First tab left than next tab and so on...
+     */
     private void setLayout(){
         int tmpX = 0;
         for(int i = 0; i < collection.size(); i++){

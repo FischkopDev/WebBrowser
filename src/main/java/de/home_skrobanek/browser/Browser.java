@@ -5,11 +5,15 @@ import de.home_skrobanek.browser.plugins.loader.PluginLoader;
 import de.home_skrobanek.browser.ui.Menu;
 import de.home_skrobanek.browser.ui.SearchTab;
 import de.home_skrobanek.browser.ui.SearchTabCollector;
+import de.home_skrobanek.browser.utils.BackgroundTask;
+import de.home_skrobanek.browser.utils.sql.SQLite;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import java.sql.SQLException;
 
 public class Browser extends Application {
 
@@ -20,11 +24,19 @@ public class Browser extends Application {
     public static Menu settingsMenu;
     public static SearchTabCollector collector;
     public static PluginLoader plugin;//TODO implement this
+    public static SQLite sql;
 
     public static final double VERSION = 1.0;
 
-    public static void main(String[]args){
+    public static void main(String[]args) throws SQLException {
         collector = new SearchTabCollector();
+
+        new BackgroundTask("Database", new Runnable() {
+            @Override
+            public void run() {
+                sql = new SQLite("usrData.db");
+            }
+        });
 
         launch(args);
     }

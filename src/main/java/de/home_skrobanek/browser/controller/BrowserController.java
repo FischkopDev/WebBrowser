@@ -80,7 +80,7 @@ public class BrowserController {
     protected void onBack(){
         String line = Browser.collector.getActive().getLastPage();
 
-        System.out.println(Browser.collector.getActive().getLastPage());
+        //System.out.println(Browser.collector.getActive().getLastPage());
         if(line != null){
             Browser.collector.getActive().removeLastPage();
             Browser.collector.searchOnTab(line, history);

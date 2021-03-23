@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="790.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="719.0" layoutY="212.0" mnemonicParsing="false" text="Button" />
+      <ListView layoutX="47.0" layoutY="212.0" prefHeight="307.0" prefWidth="476.0" />
+      <Pane prefHeight="184.0" prefWidth="1600.0" style="-fx-background-color: gray;" />
+   </children>
+</AnchorPane>

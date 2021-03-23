@@ -13,8 +13,8 @@ de/home_skrobanek/browser/Browser.java
  de.home_skrobanek.browser.Browser$1
 de/home_skrobanek/browser/plugins/loader/PluginLoader.java
  de.home_skrobanek.browser.plugins.loader.PluginLoader
-de/home_skrobanek/browser/controller/SettingsController.java
- de.home_skrobanek.browser.controller.SettingsController
+de/home_skrobanek/browser/history/HistoryData.java
+ de.home_skrobanek.browser.history.HistoryData
 de/home_skrobanek/browser/utils/DefaultSearchEngine.java
  de.home_skrobanek.browser.utils.DefaultSearchEngine
 de/home_skrobanek/browser/plugins/loader/PluginFileLoader.java
@@ -22,6 +22,8 @@ de/home_skrobanek/browser/plugins/loader/PluginFileLoader.java
 de/home_skrobanek/browser/utils/sql/SQLite.java
  de.home_skrobanek.browser.utils.sql.SQLite
  de.home_skrobanek.browser.utils.sql.SQLite$1
+de/home_skrobanek/browser/ui/intern/Menu.java
+ de.home_skrobanek.browser.ui.intern.Menu
 de/home_skrobanek/browser/animation/SearchTabAnimation.java
  de.home_skrobanek.browser.animation.SearchTabAnimation
 de/home_skrobanek/browser/utils/BackgroundTask.java
@@ -39,7 +41,5 @@ de/home_skrobanek/browser/ui/SearchTabCollector.java
  de.home_skrobanek.browser.ui.SearchTabCollector$1
 de/home_skrobanek/browser/utils/sql/SQLiteTableCollector.java
  de.home_skrobanek.browser.utils.sql.SQLiteTableCollector
-de/home_skrobanek/browser/history/HistoryData.java
- de.home_skrobanek.browser.history.HistoryData
-de/home_skrobanek/browser/ui/Menu.java
- de.home_skrobanek.browser.ui.Menu
+de/home_skrobanek/browser/controller/SettingsController.java
+ de.home_skrobanek.browser.controller.SettingsController

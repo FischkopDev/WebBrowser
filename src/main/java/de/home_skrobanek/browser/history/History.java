@@ -26,7 +26,7 @@ public class History {
         Date date = new Date();
 
         Browser.sql.update("INSERT INTO history(name, site, time) VALUES " +
-                "('"+title+"','"+site+"','"+formatter.format(date));
+                "('"+title+"','"+site+"','"+formatter.format(date) + "');");
     }
 
     public ArrayList<HistoryData> getHistory(){

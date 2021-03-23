@@ -26,7 +26,6 @@ public class SearchTab extends Pane {
 
     ArrayList<String> lastPage = new ArrayList<>();
 
-
     public SearchTab(String title, TabType type){
         //Init panel
         setLayoutX(0);
@@ -89,6 +88,10 @@ public class SearchTab extends Pane {
                     break;
                 case LANGUAGE:
                     intern = fxmlLoader.load(getClass().getResource("/FXML/language.fxml").openStream());
+                    isInternSetting = true;
+                    break;
+                case HISTORY:
+                    intern = fxmlLoader.load(getClass().getResource("/FXML/history.fxml").openStream());
                     isInternSetting = true;
                     break;
             }
@@ -195,6 +198,7 @@ public class SearchTab extends Pane {
         DEFAULT_SEARCH_ENGINE,
         ADDONS,
         INFORMATION,
+        HISTORY,
         LANGUAGE;
     }
 }

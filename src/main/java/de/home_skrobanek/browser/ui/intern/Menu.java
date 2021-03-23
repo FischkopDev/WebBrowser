@@ -1,4 +1,4 @@
-package de.home_skrobanek.browser.ui;
+package de.home_skrobanek.browser.ui.intern;
 
 import de.home_skrobanek.browser.Browser;
 import javafx.fxml.FXMLLoader;
